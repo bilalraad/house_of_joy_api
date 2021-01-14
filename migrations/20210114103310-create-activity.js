@@ -1,29 +1,23 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable("posts", {
+    await queryInterface.createTable("Activities", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      postId: {
+      activityId: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
       },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      imagesUrl: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      category: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      isLike: {
+        type: DataTypes.INTEGER,
       },
       userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      postId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -38,6 +32,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, DataTypes) => {
-    await queryInterface.dropTable("posts");
+    await queryInterface.dropTable("activites");
   },
 };

@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "Classsed",
-    "password": "root",
-    "database": "sequelize_db",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "bilal",
+    "password": "123456789",
+    "database": "house_of_joy",
+    "host": "localhost",
+    "dialect": "mariadb"
   },
   "test": {
     "username": "root",
