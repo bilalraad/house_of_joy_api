@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class Activity extends Model {
     static associate({ User, Post }) {
       this.belongsTo(User, { foreignKey: "userId", as: "user" });
-      this.belongsTo(Post, { foreignKey: "postId", as: "post&activity" });
+      this.belongsTo(Post, { foreignKey: "postId", as: "post" });
     }
   }
   Activity.init(

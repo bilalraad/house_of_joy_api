@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       category,
     });
 
-    return res.json(post);
+    return res.json(post).status(200);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
@@ -24,9 +24,11 @@ router.post("/", async (req, res) => {
 //get all posts
 router.get("/", async (req, res) => {
   try {
-    const posts = await Post.findAll({ include: "user" });
+    const posts = await Post.findAll({
+      include: ["user", "likes", "comments", "activities"],
+    });
 
-    return res.json(posts);
+    return res.json(posts).status(200);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
@@ -46,7 +48,7 @@ router.get("/:uuid", async (req, res) => {
       include: "user",
     });
 
-    return res.json(userPosts);
+    return res.json(userPosts).status(200);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
@@ -60,7 +62,7 @@ router.delete("/:postId", async (req, res) => {
   try {
     const post = await Post.findOne({ where: { postId } });
     await post.destroy();
-    return res.json({ message: "Post deleted!" });
+    return res.json({ message: "Post deleted!" }).status(200);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);

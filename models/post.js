@@ -1,14 +1,15 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
-    static associate({ User, Like, Activity }) {
+    static associate({ User, Like, Activity, Comment }) {
       this.belongsTo(User, { foreignKey: "userId", as: "user" });
-      this.hasMany(Like, { foreignKey: "postId", as: "post" });
-      this.hasMany(Activity, { foreignKey: "postId", as: "post&activity" });
+      this.hasMany(Comment, { foreignKey: "postId", as: "comments" });
+      this.hasMany(Like, { foreignKey: "postId", as: "likes" });
+      this.hasMany(Activity, { foreignKey: "postId", as: "activities" });
     }
 
     toJSON() {
-      return { ...this.get(), id: undefined };
+      return { ...this.get(), id: undefined, userId: undefined };
     }
   }
   Post.init(

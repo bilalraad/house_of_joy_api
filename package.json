@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bilalraad/house_of_joy_api.git#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mariadb": "^2.5.2",
     "sequelize": "^6.3.5"

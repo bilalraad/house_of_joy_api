@@ -8,6 +8,8 @@ app.use(express.json());
 
 app.use("/users", require("./routes/user_route"));
 app.use("/posts", require("./routes/post_route"));
+app.use("/comment", require("./routes/comment_route"));
+app.use("/like", require("./routes/like_route"));
 
 app.listen(port, async () => {
   console.log(`Server up on http://localhost:${port}`);
